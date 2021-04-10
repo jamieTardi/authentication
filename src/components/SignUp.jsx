@@ -1,10 +1,21 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
-
+import { useAuth } from '../context/AuthContext';
 const SignUp = () => {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const passwordConfirmRef = useRef();
+	const { signup } = useAuth();
+	const [error, setError] = useState(null);
+
+	function handleSubmit(e) {
+		e.preventDefault();
+		signup(emailRef.current.value, passwordRef.current.value);
+	}
+
+	if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+		return setError('The password enetered do not match, please try again');
+	}
 
 	return (
 		<>
@@ -30,6 +41,7 @@ const SignUp = () => {
 					</Form>
 				</Card.Body>
 			</Card>
+			<div>{error ? <p>{error}</p> : ''}</div>
 			<div className='w-100 text-center mt-2'>
 				Already have an account? Login
 			</div>
