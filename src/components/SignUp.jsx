@@ -32,6 +32,7 @@ const SignUp = () => {
 			<Card>
 				<Card.Body>
 					<h2 className='text-center mb-4'>Sign Up</h2>
+					{currentUser && currentUser.email}
 					<Form onSubmit={handleSubmit}>
 						<Form.Group id='email'>
 							<Form.Label>Email</Form.Label>
