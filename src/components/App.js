@@ -1,4 +1,4 @@
-import { SignUp, DashBoard } from './index';
+import { SignUp, DashBoard, Login } from './index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../styles/style.css';
 import { AuthProvider } from '../context/AuthContext';
@@ -10,7 +10,10 @@ function App() {
 				<div className='App container  d-flex align-items-center justify-content-center'>
 					<div className='w-100 sign-up'>
 						<Route exact path='/' component={DashBoard} />
-						<Route path='/signup' exact component={SignUp} />
+						<Route path='/login' component={Login} />
+						<Route path='/signup' exact>
+							<SignUp />
+						</Route>
 					</div>
 				</div>
 			</Switch>
